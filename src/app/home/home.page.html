@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="primary">
+        <ion-title class="ion-text-center">
+            TO-DO
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-row>
+        <ion-col>
+            <ion-item>
+                <ion-input type="text" placeholder="Listeye Ekle" clearInput="true" [(ngModel)]="AddToDo"></ion-input>
+                <ion-button (click)="addButton()" size="large">
+                    <ion-icon name="add-circle-outline"></ion-icon>
+                </ion-button>
+            </ion-item>
+            <ion-item>
+                Zaman Seçimi
+                <ion-datetime displayFormat="D MMM YYYY H:mm" max="2025" cancelText="Çıkış" done-text="Tamam"
+                              [(ngModel)]="time"></ion-datetime>
+            </ion-item>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+            <ion-list>
+                <app-todo *ngFor="let todo of todoList" [todoItem]="todo"></app-todo>
+            </ion-list>
+        </ion-col>
+    </ion-row>
+</ion-content>

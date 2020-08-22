@@ -1,0 +1,17 @@
+<ion-header>
+    <ion-toolbar color="success">
+        <ion-title class="ion-text-center">TODO-DONE</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item>
+        <ion-label>
+            <h1>Yapılanlar</h1>
+        </ion-label>
+    </ion-item>
+
+    <ion-list>
+        <app-done-item *ngFor="let todo of todoDone" [todoItem]="todo"></app-done-item>
+    </ion-list>
+</ion-content>
