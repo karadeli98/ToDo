@@ -75,7 +75,6 @@ export class MissionsService {
                     body: mission,
                     id: 1,
                     schedule: {at: new Date(alarmTime)},
-                    sound: 'file://assets/sound/harry.mp3',
                     attachments: null,
                     actionTypeId: "",
                     extra: null

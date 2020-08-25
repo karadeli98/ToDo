@@ -1,9 +1,7 @@
-<ion-item>
-    <ion-label>
-        {{todoItem.mission}}<br>
-        {{date}}
-        {{hour}}
-    </ion-label>
-
-    <ion-icon name="checkmark-circle-outline" slot="end" color="success" (click)="onDelete(todoItem)"></ion-icon>
+<ion-item (click)="onGetInfo()">
+    <ion-text>
+        {{todoItem.mission}} <br>
+        {{date}} {{hour}}
+    </ion-text>
+    <ion-icon name="checkmark-circle-outline" slot="end" color="medium" (click)="onDelete(todoItem)"></ion-icon>
 </ion-item>

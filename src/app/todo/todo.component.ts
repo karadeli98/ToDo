@@ -20,9 +20,9 @@ export class TodoComponent implements OnInit {
 
     constructor(private mission: MissionsService,
                 private alertController: AlertController,
-                private home: HomePage) {
+                private home: HomePage,
+                private router: Router) {
     }
-
 
     ngOnInit() {
         if (this.todoItem.time !== '' && this.todoItem.time !== undefined) {
@@ -54,6 +54,10 @@ export class TodoComponent implements OnInit {
         }).then(AlertEl => {
             AlertEl.present();
         });
+    }
+
+    onGetInfo() {
+        console.log('Get info');
     }
 
 }
