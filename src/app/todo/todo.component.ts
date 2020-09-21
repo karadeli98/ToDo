@@ -4,7 +4,6 @@ import {MissionsService} from "../missions.service";
 import {AlertController} from '@ionic/angular';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HomePage} from "../home/home.page";
-import {TodoDonePage} from "../todo-done/todo-done.page";
 
 @Component({
     selector: 'app-todo',
@@ -39,6 +38,7 @@ export class TodoComponent implements OnInit {
     }
 
     onDelete(loadedTodo: TodoModel): void {
+
         this.alertController.create({
             header: 'Emin misin?', message: 'Görevi tamamladığına emin misin?', buttons: [{
                 text: 'Hayır',
@@ -57,7 +57,6 @@ export class TodoComponent implements OnInit {
     }
 
     onGetInfo() {
-        console.log('Get info');
+        this.router.navigate(['/tabs', 'home', 'todo-detail', this.todoItem.id]).then(r => r);
     }
-
 }

@@ -21,6 +21,7 @@ export class HomePage implements OnInit {
     }
 
     ngOnInit(): void {
+
     }
 
     ionViewWillEnter() {
@@ -36,16 +37,15 @@ export class HomePage implements OnInit {
             this.alertController.create({
                 header: 'Görevin Boş Olamaz'
             }).then(AlertEl => {
-                AlertEl.present();
+                AlertEl.present().then(r => r);
             });
             return;
         }
         const id = new Date().getTime().toString();
         this.mission.addTodo(id, this.AddToDo, this.time);
-
         this.AddToDo = '';
         this.time = '';
+        this.ionViewWillEnter();
     }
-
 
 }

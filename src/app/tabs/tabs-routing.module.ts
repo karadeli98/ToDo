@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {TabsPage} from './tabs.page';
+import {HomePageModule} from "../home/home.module";
 
 const routes: Routes = [
     {
@@ -9,22 +10,14 @@ const routes: Routes = [
         children: [
             {
                 path: 'home',
-                children: [
-                    {
-                        path: '',
-                        loadChildren: () =>
-                            import('../home/home.module').then(m => m.HomePageModule)
-                    }
-                ]
+                loadChildren: () =>
+                    import('../home/home.module').then(m => m.HomePageModule),
             }, {
                 path: 'todo-done',
-                children: [
-                    {
-                        path: '',
-                        loadChildren: () =>
-                            import('../todo-done/todo-done.module').then(m => m.TodoDonePageModule)
-                    }
-                ]
+                loadChildren: () =>
+                    import('../todo-done/todo-done.module').then(m => m.TodoDonePageModule)
+
+
             }
         ]
     },

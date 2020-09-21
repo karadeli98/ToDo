@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
 import {TodoModel} from "./home/todo.model";
 import {Plugins} from '@capacitor/core';
+import {HttpClient} from "@angular/common/http";
+import {tap} from "rxjs/operators";
 
 const {LocalNotifications} = Plugins;
 
@@ -13,7 +15,7 @@ export class MissionsService {
     private todoList: TodoModel[] = [];
     private todoDone: TodoModel[] = [];
 
-    constructor() {
+    constructor(private http: HttpClient) {
     }
 
     getAllTodo() {
@@ -22,6 +24,15 @@ export class MissionsService {
         return localStorageItem === null ? [] : localStorageItem.todo;
     }
 
+    findTodo(todoId: any) {
+        const localStorageItem = JSON.parse(localStorage.getItem('todo'));
+        // this.recipes = localStorageItem.recipe;
+        for (const todo of localStorageItem.todo) {
+            if (todo.id === todoId) {
+                return todo;
+            }
+        }
+    }
 
     deleteTodo(TodoId: any) {
         this.todoList = this.todoList.filter(todo => {
@@ -37,6 +48,9 @@ export class MissionsService {
         if (time1 !== '' && time1 !== undefined) {
             this.alarm(time1, mission1);
         }
+        return this.http.post('https://to-do-c74c7.firebaseio.com/todos.json', {...newTodo}).subscribe(resData => {
+            console.log(resData);
+        });
     }
 
     getAllTodoDone() {
